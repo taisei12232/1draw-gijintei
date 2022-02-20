@@ -1,0 +1,30 @@
+.component-header {
+    padding: 0px;
+    position: relative;
+    background-color: #EF7DB6;
+    display:flex;
+  }
+
+  .component-header > p {
+    font-weight: normal;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+    padding:4px;
+  }
+
+  .main {
+    text-align: left;
+    font-size:28px;
+    margin:0;
+  }
+
+  .sub {
+    margin:auto 0;
+    font-size:20px;
+    text-align: right;
+  }
+  
+  p:nth-child(2) {
+    margin-left: auto;
+    border-right:1px solid;
+  }
