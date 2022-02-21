@@ -8,7 +8,6 @@ const firebaseConfig = {
     databaseURL: process.env.REACT_APP_DATABASEURL
 }
 
-console.log(process.env.REACT_APP_PROJECTID)
 initializeApp(firebaseConfig);
 const db = getFirestore();
 
