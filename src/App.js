@@ -12,15 +12,14 @@ const LogicId = {
 
 function App() {
   const {data} = useFetchTweet(LogicId.ILLUST_SO_FAR, days);
-  console.log(data);
   if (!data) return (<div>loading...</div>)
   return (
     <div className="App">
       <Header />
       {data.map(({date, tweetIds}) => (
-        <div key={date} class="Days">
+        <div key={date} className="Days">
           <p>{date}</p>
-          <div class="twitter">
+          <div className="twitter">
             {tweetIds.map(tweetId => (
               <TwitterTweetEmbed
                 key={tweetId}
