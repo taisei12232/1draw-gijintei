@@ -24,7 +24,7 @@ function App() {
               <TwitterTweetEmbed
                 key={tweetId}
                 tweetId={tweetId}
-                options={{ width: 250 }}
+                options={{ width: screen.width / 4 }}
                 placeholder={
                   <div
                     style={{

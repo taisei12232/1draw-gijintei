@@ -36,12 +36,12 @@
 }
 
 .Days {
-  width:1000px;
+  width:80vw;
   margin: 0 auto;
 }
 
 .Days > p {
-  font-size: 20px;
+  font-size: 2vh;
   text-align: left;
 }
 
