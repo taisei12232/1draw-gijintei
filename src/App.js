@@ -13,7 +13,6 @@ const LogicId = {
 function App() {
   const {data} = useFetchTweet(LogicId.ILLUST_SO_FAR, days);
   if (!data) return (<div>loading...</div>)
-  console.log(window.screen.width)
   return (
     <div className="App">
       <Header />
@@ -26,8 +25,8 @@ function App() {
                 key={tweetId}
                 tweetId={tweetId}
                 options={{ width: 250,
-                          conversation: none,
-                          lang: ja }}
+                          conversation: 'none',
+                          lang: 'ja' }}
                 placeholder={
                   <div
                     style={{
