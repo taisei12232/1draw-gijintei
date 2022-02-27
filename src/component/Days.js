@@ -1,9 +1,10 @@
 const dt = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
 
 var days = [];
-for(var i = 0;i < 40;i++){
-    days.push(dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" +  dt.getDate());
-    dt.setDate(dt.getDate() - 1);
+var day = "";
+while(1){
+    day = dt.getFullYear() + "-" + (dt.getMonth()+1) + "-" +  dt.getDate();
+    days.push(day);
 }
 
 export {days};
