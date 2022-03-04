@@ -12,6 +12,7 @@ const LogicId = {
 
 function App() {
   const {data} = useFetchTweet(LogicId.ILLUST_SO_FAR, days);
+  console.log(data);
   if (!data) return (<div>loading...</div>)
   return (
     <div className="App">
