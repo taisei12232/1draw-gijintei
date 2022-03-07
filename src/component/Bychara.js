@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 
 function About() {
-    const { id } = useParams();
+    const { name } = useParams();
     return (
         <div>
             <h1>個別記事 {id}</h1>

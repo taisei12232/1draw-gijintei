@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Tweets />} />
             <Route path="/bychara" element={<Bychara />} />
-            <Route path="/bychara/:id" element={<Bychara />} />
+            <Route path="/bychara/:name" element={<Bychara />} />
           </Routes>
         </Router>
     </div>
