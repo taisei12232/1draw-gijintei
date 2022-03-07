@@ -14,14 +14,15 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <Router>
-          <Routes>
-            <Route path="/" element={<Tweets />} />
-            <Route path="/bychara" element={<Bychara />} />
-            <Route path="/bychara/:name" element={<Bychara />} />
-          </Routes>
-        </Router>
+        <Header />
+        <Routes>
+          <Route path="/" />
+          <Route path="/1draw" element={<Tweets />} />
+          <Route path="/bychara" element={<Bychara />} />
+          <Route path="/bychara/:name" element={<Bychara />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

@@ -4,13 +4,14 @@
 }
 
 h1 {
-    font-size: 2.2vw;
+    font-size: max(3vw,30px);
 }
 
 h2 {
-    font-size: 1.6vw;
+    font-size: max(2vw,20px);
 }
 
-p {
-    font-size: 1.1vw;
+.component-bychara >  p {
+    font-size: max(1.6vw,16px);
+    margin: 0;
 }

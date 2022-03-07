@@ -2,7 +2,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "./firebase"
 import useSWR from 'swr'
 
-export const useFetchTweet = (logicId, dateList) => {
+export const useFetchAllTweet = (logicId, dateList) => {
     const fetcher = async () => {
       const requests = dateList.map(date => {
         const docRef = doc(db, logicId, date);
