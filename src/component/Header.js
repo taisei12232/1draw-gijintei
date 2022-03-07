@@ -6,10 +6,10 @@ export default class Header extends PureComponent {
   render() {
     return (
       <header className="component-header">
-        <a href="/" className='main'><image src="../../public/gijintei-logo.png" alt="桜花擬人亭" /></a>
-        <Link to='/1draw' className='sub'>ワンドロ</Link>
-        <Link to='/farday' className='sub'>日付別</Link>
-        <Link to='/bychara' className='sub'>キャラ別</Link>
+        <Link to="/" className='main'><img src="../../public/gijintei-logo.png" alt="桜花擬人亭" /></Link>
+        <Link to='/1draw' className='sub'><p>ワンドロ</p></Link>
+        <Link to='/farday' className='sub'><p>日付別</p></Link>
+        <Link to='/bychara' className='end'><p>キャラ別</p></Link>
       </header>
     );
   }

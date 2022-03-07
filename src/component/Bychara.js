@@ -11,6 +11,7 @@ const LogicId = {
 function About() {
     const { name } = useParams();
     const { data } = useFetchBycharaTweet(LogicId.BY_CHARA,name);
+    if (!data) return (<div>loading...</div>)
     return (
         <div className='component-bychara'>
             <h1>{name}</h1>

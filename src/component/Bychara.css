@@ -8,10 +8,10 @@ h1 {
 }
 
 h2 {
-    font-size: max(2vw,20px);
+    font-size: max(1.6vw,16px);
 }
 
 .component-bychara >  p {
-    font-size: max(1.6vw,16px);
+    font-size: max(1.8vw,18px);
     margin: 0;
 }

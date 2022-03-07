@@ -19,17 +19,14 @@
   }
 
   .sub {
-    margin:auto 0;
+    margin:0;
     font-size:20px;
     text-align: right;
-  }
-  
-  Link {
-    margin-left: auto;
     border-right:1px solid;
   }
 
-  Link :last-child{
+  .end{
     border:none;
-    margin-left: 0;
+    font-size:20px;
+    text-align: right;
   }
