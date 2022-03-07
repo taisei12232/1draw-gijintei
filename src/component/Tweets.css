@@ -1,0 +1,15 @@
+.twitter {
+    display:flex;
+    flex-wrap: wrap;
+    border-top:1px solid;
+}
+
+.Days {
+    width:80vw;
+    margin: 0 auto;
+}
+
+.Days > p {
+    font-size: 2vw;
+    text-align: left;
+}
