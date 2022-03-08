@@ -3,6 +3,8 @@ import './App.css';
 import Header from './component/Header';
 import Tweets from './component/Tweets';
 import Bychara from './component/Bychara';
+import Farday from './component/Farday';
+import Notfound from './component/Notfound';
 
 import {
   BrowserRouter as Router,
@@ -19,8 +21,9 @@ function App() {
         <Routes>
           <Route path="/" />
           <Route path="/1draw" element={<Tweets />} />
-          <Route path="/bychara" element={<Bychara />} />
+          <Route path="/farday" element={<Farday />} />
           <Route path="/bychara/:name" element={<Bychara />} />
+          <Route path='/*' element={<Notfound />}
         </Routes>
       </Router>
     </div>
