@@ -5,21 +5,19 @@ import useSWR from 'swr'
 export const useFetchBycharaTweet = (logicId, nameOfChara) => {
     const fetcher = async () => {
         const docRef = doc(db, logicId, nameOfChara);
-        console.log(nameOfChara);
         const response = await getDoc(docRef)
-        console.log(nameOfChara);
-        console.log(response)
-        console.log(response.exists())
         if(!response.exists()){
-            return []
+            return {
+                'about':{
+                    'description':'Nodata',
+                    'address':'Nodata',
+                    'birthday':'Nodata',
+                    'motif':'Nodata'
+                },
+                'ids':[]
+            }
         }
-        if('ids' in response.data()){
-            console.log(response.data()['ids'])
-            return response.data()['ids']
-        }else{
-            console.log("error!");
-            return []
-        }
+        return response.data();
     };
     return useSWR(`/doc/${nameOfChara}`, fetcher);
 };

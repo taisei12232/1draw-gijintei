@@ -17,17 +17,17 @@ function About() {
         <div className='component-bychara'>
             <h1>{name}</h1>
             <h2>description</h2>
-            <p>蓬莱姉妹の長女。身長が姉妹の中で1番小さいがこれでも中央都市区のエリアAの管理者。妹達の支え（マスコット）となっている。</p>
+            <p>{data['about']['description']}</p>
             <h2>address</h2>
-            <p>中央区統制局</p>
+            <p>{data['about']['address']}</p>
             <h2>birthday</h2>
-            <p>11月20日</p>
+            <p>{data['about']['birthday']}</p>
             <h2>motif</h2>
-            <p>ネズミ</p>
+            <p>{data['about']['motif']}</p>
             <h2>Illust</h2>
             <div class="tweets">
                 {data
-                    ? data.map(tweetId => (
+                    ? data['ids'].map(tweetId => (
                     <TwitterTweetEmbed
                         key={tweetId}
                         tweetId={tweetId}
