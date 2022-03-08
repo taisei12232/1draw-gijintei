@@ -11,6 +11,7 @@ const LogicId = {
 function About() {
     const { name } = useParams();
     const { data } = useFetchBycharaTweet(LogicId.BY_CHARA,name);
+    console.log(data);
     if (!data) return (<div>loading...</div>)
     return (
         <div className='component-bychara'>
@@ -24,7 +25,7 @@ function About() {
             <h2>motif</h2>
             <p>ネズミ</p>
             <h2>Illust</h2>
-            <div>
+            <div class="tweets">
                 {data
                     ? data.map(tweetId => (
                     <TwitterTweetEmbed
