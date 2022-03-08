@@ -4,7 +4,7 @@
     background-color: #EF7DB6;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     display:flex;
-    justify-content: space-between;
+    font-size: 20px;
   }
   
   img {
@@ -14,27 +14,23 @@
   .main {
     text-align: left;
     font-size: 28px;
-    margin: auto 0;
-    height: 46px;
-  }
-
-  .links {
-    font-size:20px;
-    margin: 0;
+    margin: auto auto auto 0;
     height: 46px;
   }
 
   .sub {
     margin: auto 0;
     border-right:1px solid;
+    padding: 4px;
   }
 
   .end{
     border:none;
     margin: auto 0;
+    padding: 4px;
   }
 
-  a :link, a :visited, a :hover, a :active {
+  a:link, a:visited, a:hover, a:active {
     color: #333;
     text-decoration: none;
   }
