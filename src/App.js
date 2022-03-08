@@ -22,6 +22,7 @@ function App() {
           <Route path="/" />
           <Route path="/1draw" element={<Tweets />} />
           <Route path="/farday" element={<Farday />} />
+          <Route path="/bychara" element={<Allchara />} />
           <Route path="/bychara/:name" element={<Bychara />} />
           <Route path='/*' element={<Notfound />} />
         </Routes>

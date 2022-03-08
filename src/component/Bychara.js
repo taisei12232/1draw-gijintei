@@ -11,7 +11,6 @@ const LogicId = {
 function About() {
     const { name } = useParams();
     const { data } = useFetchBycharaTweet(LogicId.BY_CHARA,name);
-    console.log(data);
     if (!data) return (<div>loading...</div>)
     return (
         <div className='component-bychara'>
@@ -25,31 +24,32 @@ function About() {
             <h2>motif</h2>
             <p>{data['about']['motif']}</p>
             <h2>Illust</h2>
-            <div class="tweets">
-                {data
-                    ? data['ids'].map(tweetId => (
-                    <TwitterTweetEmbed
-                        key={tweetId}
-                        tweetId={tweetId}
-                        options={{ width: 250,
-                                conversation: 'none',
-                                lang: 'ja' }}
-                        placeholder={
-                            <div
-                                style={{
-                                padding: 10,
-                                margin: 10,
-                                backgroundColor: 'gray',
-                                color: 'white'
-                                }}
-                                >
-                            </div>
-                        }
-                    />
-                ))
-            :<p>loading...</p>
+            {data['ids'].length
+                ?
+                <div className="tweets">
+                    {data['ids'].map(tweetId => (
+                        <TwitterTweetEmbed
+                            key={tweetId}
+                            tweetId={tweetId}
+                            options={{ width: 250,
+                                    conversation: 'none',
+                                    lang: 'ja' }}
+                            placeholder={
+                                <div
+                                    style={{
+                                    padding: 10,
+                                    margin: 10,
+                                    backgroundColor: 'gray',
+                                    color: 'white'
+                                    }}
+                                    >
+                                </div>
+                            }
+                        />
+                    ))}
+                </div>
+                :<p>No data</p>
             }
-            </div>
         </div>
     )
 }

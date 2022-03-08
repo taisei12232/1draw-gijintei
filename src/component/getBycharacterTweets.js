@@ -9,15 +9,27 @@ export const useFetchBycharaTweet = (logicId, nameOfChara) => {
         if(!response.exists()){
             return {
                 'about':{
-                    'description':'Nodata',
-                    'address':'Nodata',
-                    'birthday':'Nodata',
-                    'motif':'Nodata'
+                    'description':'No data',
+                    'address':'No data',
+                    'birthday':'No data',
+                    'motif':'No data'
                 },
                 'ids':[]
             }
         }
-        return response.data();
+        var data = response.data()
+        if(!('about' in data)){
+            data['about'] = {
+                'description':'No data',
+                'address':'No data',
+                'birthday':'No data',
+                'motif':'No data'
+            }
+        }
+        if(!('ids' in data)){
+            data['ids'] = []
+        }
+        return data;
     };
     return useSWR(`/doc/${nameOfChara}`, fetcher);
 };
