@@ -23,7 +23,7 @@ function App() {
           <Route path="/1draw" element={<Tweets />} />
           <Route path="/farday" element={<Farday />} />
           <Route path="/bychara/:name" element={<Bychara />} />
-          <Route path='/*' element={<Notfound />}
+          <Route path='/*' element={<Notfound />} />
         </Routes>
       </Router>
     </div>
