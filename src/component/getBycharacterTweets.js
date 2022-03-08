@@ -10,6 +10,9 @@ export const useFetchBycharaTweet = (logicId, nameOfChara) => {
         console.log(nameOfChara);
         console.log(response)
         console.log(response.exists())
+        if(!response.exists()){
+            return []
+        }
         if('ids' in response.data()){
             console.log(response.data()['ids'])
             return response.data()['ids']

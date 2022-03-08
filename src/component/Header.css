@@ -2,14 +2,9 @@
     padding: 0px;
     position: relative;
     background-color: #EF7DB6;
-    display:flex;
-  }
-
-  .component-header > p {
-    font-weight: normal;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
-    padding:0px;
+    display:flex;
+    justify-content: space-between;
   }
   
   img {
@@ -23,22 +18,23 @@
     height: 46px;
   }
 
+  .links {
+    font-size:20px;
+    margin: 0;
+    height: 46px;
+  }
+
   .sub {
     margin: auto 0;
-    font-size:20px;
-    text-align: right;
     border-right:1px solid;
-    text-align: right;
   }
 
   .end{
     border:none;
     margin: auto 0;
-    font-size:20px;
-    text-align: right;
   }
 
-  .link:link, a:visited, a:hover, a:active {
-    color: black;
+  a :link, a :visited, a :hover, a :active {
+    color: #333;
     text-decoration: none;
   }

@@ -9,6 +9,7 @@ h1 {
 
 h2 {
     font-size: max(1.6vw,16px);
+    margin : 5px auto;
 }
 
 .component-bychara >  p {
