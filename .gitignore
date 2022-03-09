@@ -24,4 +24,4 @@ yarn-error.log*
 
 .env
 .env.local
-Tweets.js
+test.js

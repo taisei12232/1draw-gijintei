@@ -2,29 +2,35 @@
     padding: 0px;
     position: relative;
     background-color: #EF7DB6;
-    display:flex;
-  }
-
-  .component-header > p {
-    font-weight: normal;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
-    padding:4px;
+    display:flex;
+    font-size: 20px;
   }
-
+  
+  img {
+    height: 46px;
+    margin: 0;
+  }
   .main {
     text-align: left;
-    font-size:28px;
-    margin:0;
+    font-size: 28px;
+    margin: auto auto auto 0;
+    height: 46px;
   }
 
   .sub {
-    margin:auto 0;
-    font-size:20px;
-    text-align: right;
-  }
-  
-  p:nth-child(2) {
-    margin-left: auto;
+    margin: auto 0;
     border-right:1px solid;
+    padding: 4px;
+  }
+
+  .end{
+    border:none;
+    margin: auto 0;
+    padding: 4px;
+  }
+
+  a:link, a:visited, a:hover, a:active {
+    color: #333;
+    text-decoration: none;
   }

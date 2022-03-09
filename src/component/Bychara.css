@@ -1,0 +1,23 @@
+.component-bychara {
+    width:80vw;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: max(3vw,30px);
+}
+
+h2 {
+    font-size: max(1.6vw,16px);
+    margin : 5px auto;
+}
+
+.component-bychara >  p {
+    font-size: max(1.8vw,18px);
+    margin: 0;
+}
+
+.tweets{
+    display: flex;
+    flex-wrap: wrap;
+}
