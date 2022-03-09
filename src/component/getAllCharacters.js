@@ -1,6 +1,7 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase"
-import useSWR from 'swr'
+import useSWRImmutable from 'swr/immutable'
+
 
 export const useFetchAllCharacters = (logicId) => {
     const fetcher = async () => {
@@ -17,5 +18,5 @@ export const useFetchAllCharacters = (logicId) => {
         });
         return docs;
     };
-    return useSWR(`/doc/allchara`, fetcher);
+    return useSWRImmutable(`/doc/allchara`, fetcher);
 };
