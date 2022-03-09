@@ -1,9 +1,13 @@
 .characters {
     margin:0 auto;
+    width: 80vw;
+}
+
+.charas {
+    margin: 0 auto;
+    border-top:1px solid;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    width: 80vw;
 }
 
 .chara {
@@ -13,4 +17,5 @@
     background-color: #FEE;
     padding: 3px;
     color:#633;
+    text-decoration: none;
 }
