@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css';
 import Header from './component/Header';
 import Tweets from './component/Tweets';
+import Allchara from './component/Allchara';
 import Bychara from './component/Bychara';
 import Farday from './component/Farday';
 import Notfound from './component/Notfound';
