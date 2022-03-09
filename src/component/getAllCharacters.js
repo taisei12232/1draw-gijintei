@@ -8,9 +8,7 @@ export const useFetchAllCharacters = (logicId) => {
         const response = await getDocs(docRef);
         var docs = [];
         response.forEach(doc => {
-            console.log(doc.id);
             docs.push(doc.id);
-            console.log(docs);
         });
         return docs;
     };

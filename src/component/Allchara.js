@@ -8,11 +8,14 @@ const LogicId = {
 
 function Allchara(){
     const { data } = useFetchAllCharacters(LogicId.BY_CHARA);
-    console.log(data);
     if(!data) return (<div>loading...</div>)
     return (
         <div className="allchara">
-            <Link to='蓬莱ネネ' >蓬莱ネネ</Link>
+            <div className="characters">
+            {data.map(chara => (
+                <Link to={chara} key={chara} className="chara">{chara}</Link>
+            ))}
+            </div>
         </div>
         )
 }
