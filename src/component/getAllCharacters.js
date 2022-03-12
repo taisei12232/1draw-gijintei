@@ -3,17 +3,17 @@ import { db } from "./firebase"
 import useSWRImmutable from 'swr/immutable'
 
 
-export const useFetchAllCharacters = (logicId) => {
+export const useFetchAllCharacters = (logicId,key) => {
     const fetcher = async () => {
         const docRef = collection(db, logicId);
         const response = await getDocs(docRef);
         var docs = {};
         response.forEach(doc => {
-            const address = doc.data()['about']['address'];
-            if(address in docs){
-                docs[address].push(doc.id);
+            const keys = doc.data()['about'][key];
+            if(keys in docs){
+                docs[keys].push(doc.id);
             }else{
-                docs[address] = [doc.id];
+                docs[keys] = [doc.id];
             }
         });
         return docs;
