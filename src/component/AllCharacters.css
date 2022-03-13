@@ -3,23 +3,22 @@
     width: 80vw;
 }
 
-.allsort {
+.grouping-type {
     border-radius: 8px;
     display: block;
     margin-left: auto;
     font-size: 16px;
     background-color: rgb(255, 247, 247);
-
 }
 
-.charas {
+.group__characters {
     margin: 0 auto;
     border-top:1px solid;
     display: flex;
     flex-wrap: wrap;
 }
 
-.chara {
+.character {
     margin:8px;
     border:1px solid;
     border-radius: 10px;
