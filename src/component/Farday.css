@@ -1,3 +1,7 @@
-p {
+.component-farday {
+    width: 80vw;
+}
+
+.component-farday > p {
     margin:auto;
 }

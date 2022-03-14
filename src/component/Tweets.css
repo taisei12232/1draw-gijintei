@@ -1,3 +1,7 @@
+.componnet-tweets {
+    width: 80vw;
+}
+
 .twitter {
     display:flex;
     flex-wrap: wrap;
@@ -5,7 +9,6 @@
 }
 
 .Days {
-    width:80vw;
     margin: 0 auto;
 }
 
