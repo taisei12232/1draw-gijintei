@@ -21,7 +21,7 @@ const AllCharacters = () => {
     const groups = useMemo(
         () => {
             if (!characters) return;
-            Object.values(generateCharacterGroup({ characters, groupingBy }))
+            return Object.values(generateCharacterGroup({ characters, groupingBy }))
         },
         [characters, groupingBy]
     );
@@ -29,8 +29,9 @@ const AllCharacters = () => {
     const handleSelectChange = useCallback((e) => {
         setGroupingBy(e.target.value);
     }, []);
+    
     if (!characters || !groups) return <div>loading...</div>;
-
+    
     return (
         <div className="component-allcharacters">
             <div className="characters">
