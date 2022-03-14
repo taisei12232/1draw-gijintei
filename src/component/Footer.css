@@ -1,0 +1,24 @@
+.component-footer {
+    background-color: #515017;
+    color: #E5E5BD;
+    text-align: center;
+    padding-top: 25px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.component-footer > p {
+    display: inline-block;
+    padding-right: 8px;
+    margin: 0;
+}
+
+.component-footer > a {
+    color:#E5E5BD;
+    text-decoration: none;
+}
+
+.component-footer > a:first-child {
+    display: block;
+}

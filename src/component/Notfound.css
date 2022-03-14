@@ -1,3 +1,7 @@
-p {
+.component-notfound {
+    width: 80vw;
+}
+
+.component-notfound > p {
     margin: auto;
 }

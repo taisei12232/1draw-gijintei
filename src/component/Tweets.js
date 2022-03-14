@@ -12,7 +12,7 @@ function Tweets(){
     const {data} = useFetchAllTweet(LogicId.ILLUST_SO_FAR, days);
     if (!data) return (<div>loading...</div>)
     return (
-        <div>
+        <div className='component-tweets'>
             {data.map(({date, tweetIds}) => (
                 <div key={date} className="Days">
                     <p>{date}</p>

@@ -2,7 +2,8 @@ import React from "react";
 import './Notfound.css';
 
 function Notfound(){
-    return (<p>ＵＲＬがまちがっているよ！</p>)
+    return (
+        <div className="component-notfound"><p>ＵＲＬがまちがっているよ！</p></div>)
 }
 
 export default Notfound;

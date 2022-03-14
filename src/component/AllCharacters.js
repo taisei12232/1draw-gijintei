@@ -19,22 +19,24 @@ const AllCharacters = () => {
     const [groupingBy, setGroupingBy] = useState(GROUPING_TYPE.ADDRESS);
 
     const groups = useMemo(
-        () => Object.values(generateCharacterGroup({ characters, groupingBy })),
+        () => {
+            if (!characters) return;
+            Object.values(generateCharacterGroup({ characters, groupingBy }))
+        },
         [characters, groupingBy]
     );
 
     const handleSelectChange = useCallback((e) => {
-        setGroupingBy(e.target.currentValue);
+        setGroupingBy(e.target.value);
     }, []);
-    console.log(groups);
     if (!characters || !groups) return <div>loading...</div>;
 
     return (
-        <div className="container">
+        <div className="component-allcharacters">
             <div className="characters">
             <select className="grouping-type" onChange={handleSelectChange}>
                 <option value={GROUPING_TYPE.ADDRESS}>住所順</option>
-                <option value={GROUPING_TYPE.NAME}>五十音順</option>
+                <option value={GROUPING_TYPE.READING}>五十音順</option>
                 <option value={GROUPING_TYPE.BIRTHDAY}>誕生日順</option>
             </select>
                 {groups.map((group) => (
