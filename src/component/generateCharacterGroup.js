@@ -26,7 +26,6 @@ const generateGroup = ({ characters, groupingBy }) => {
         };
     });
     var sortedGroup = sortGroup({ group, groupingBy });
-    if(groupingBy === GROUPING_TYPE.BIRTHDAY) sortedGroup = replaceDate(sortedGroup);
     return sortedGroup;
 };
 
@@ -52,7 +51,7 @@ const sortGroup = ({ group, groupingBy }) => {
             break;
         case GROUPING_TYPE.BIRTHDAY:
             slicedGroup.sort((a,b) => (new Date(a.name) > new Date(b.name))?1:-1);
-            //slicedGroup.reverse();
+            slicedGroup = replaceDate(slicedGroup);
             break;
         default:
             slicedGroup.sort((a,b) => (a.name>b.name)?1:-1);
