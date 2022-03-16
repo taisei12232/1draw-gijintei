@@ -25,7 +25,6 @@ const generateGroup = ({ characters, groupingBy }) => {
             characters: [...currentCharacters, character],
         };
     });
-    console.log(group);
     var sortedGroup = sortGroup({ group, groupingBy });
     if(groupingBy === GROUPING_TYPE.BIRTHDAY) sortedGroup = replaceDate(sortedGroup);
     return sortedGroup;
@@ -46,7 +45,6 @@ const generateGroupByInitial = ({ characters }) => {
 };
 
 const sortGroup = ({ group, groupingBy }) => {
-    console.log(group)
     var slicedGroup = Object.values(group);
     switch(groupingBy) {
         case GROUPING_TYPE.ADDRESS:
@@ -64,12 +62,10 @@ const sortGroup = ({ group, groupingBy }) => {
 }
 
 const replaceDate = (group) => {
-    console.log(group);
     group.forEach((piece,i) => {
         if(piece.name.indexOf("-") === -1) return;
         var splitedDoB = piece.name.split("-");
         group[i].name = splitedDoB[0] + "月" + splitedDoB[1] + "日";
     })
-    console.log(group);
     return group;
 }

@@ -31,7 +31,7 @@ const AllCharacters = () => {
     }, []);
 
     if (!characters || !groups) return <div>loading...</div>;
-    console.log(groups);
+
     return (
         <div className="component-allcharacters">
             <div className="characters">
