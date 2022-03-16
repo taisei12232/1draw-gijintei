@@ -44,12 +44,27 @@ const generateGroupByInitial = ({ characters }) => {
 };
 
 const sortGroup = ({ group, groupingBy }) => {
-    var slicedGroup = Object.keys(group).map((k)=>({ key: k, value: group[k] }));
-    if(groupingBy === GROUPING_TYPE.ADDRESS) slicedGroup.sort((a,b) => (addressOrder.indexOf(a.key)>addressOrder.indexOf(b.key))?1:-1);
-    else slicedGroup.sort((a,b) => (a.key>b.key)?1:-1);
-    slicedGroup.forEach(pieces => pieces.value.characters.sort((a,b) => (a.about.reading>b.about.reading)?1:-1));
-    const sortedGroup = Object.assign({}, ...slicedGroup.map((item) => ({
-        [item.key]: item.value,
-    })));
-    return sortedGroup;
+    var slicedGroup = Object.values(group);
+    switch(groupingBy) {
+        case GROUPING_TYPE.ADDRESS:
+            slicedGroup.sort((a,b) => (addressOrder.indexOf(a.name)>addressOrder.indexOf(b.name))?1:-1);
+            break;
+        case GROUPING_TYPE.BIRTHDAY:
+            slicedGroup.sort((a,b) => (new Date(a.name) > new Date(b.name))?1:-1);
+            slicedGroup = replaceDate(slicedGroup);
+            break;
+        default:
+            slicedGroup.sort((a,b) => (a.name>b.name)?1:-1);
+    }
+    slicedGroup.forEach(pieces => pieces.characters.sort((a,b) => (a.about.reading>b.about.reading)?1:-1));
+    return slicedGroup;
+}
+
+const replaceDate = (group) => {
+    group.forEach((piece,i) => {
+        if(piece.name.indexOf("-") === -1) return;
+        const splitedDoB = piece.name.split("-");
+        group[i].name = splitedDoB[0] + "月" + splitedDoB[1] + "日";
+    })
+    return group;
 }
