@@ -25,7 +25,7 @@ const generateGroup = ({ characters, groupingBy }) => {
             characters: [...currentCharacters, character],
         };
     });
-    var sortedGroup = sortGroup({ group, groupingBy });
+    const sortedGroup = sortGroup({ group, groupingBy });
     return sortedGroup;
 };
 
@@ -63,7 +63,7 @@ const sortGroup = ({ group, groupingBy }) => {
 const replaceDate = (group) => {
     group.forEach((piece,i) => {
         if(piece.name.indexOf("-") === -1) return;
-        var splitedDoB = piece.name.split("-");
+        const splitedDoB = piece.name.split("-");
         group[i].name = splitedDoB[0] + "月" + splitedDoB[1] + "日";
     })
     return group;
