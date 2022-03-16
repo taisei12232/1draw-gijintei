@@ -25,7 +25,9 @@ const generateGroup = ({ characters, groupingBy }) => {
             characters: [...currentCharacters, character],
         };
     });
-    const sortedGroup = sortGroup({ group, groupingBy });
+    console.log(group);
+    var sortedGroup = sortGroup({ group, groupingBy });
+    if(groupingBy === GROUPING_TYPE.BIRTHDAY) sortedGroup = replaceDate(sortedGroup);
     return sortedGroup;
 };
 
@@ -44,12 +46,30 @@ const generateGroupByInitial = ({ characters }) => {
 };
 
 const sortGroup = ({ group, groupingBy }) => {
-    var slicedGroup = Object.keys(group).map((k)=>({ key: k, value: group[k] }));
-    if(groupingBy === GROUPING_TYPE.ADDRESS) slicedGroup.sort((a,b) => (addressOrder.indexOf(a.key)>addressOrder.indexOf(b.key))?1:-1);
-    else slicedGroup.sort((a,b) => (a.key>b.key)?1:-1);
-    slicedGroup.forEach(pieces => pieces.value.characters.sort((a,b) => (a.about.reading>b.about.reading)?1:-1));
-    const sortedGroup = Object.assign({}, ...slicedGroup.map((item) => ({
-        [item.key]: item.value,
-    })));
-    return sortedGroup;
+    console.log(group)
+    var slicedGroup = Object.values(group);
+    switch(groupingBy) {
+        case GROUPING_TYPE.ADDRESS:
+            slicedGroup.sort((a,b) => (addressOrder.indexOf(a.name)>addressOrder.indexOf(b.name))?1:-1);
+            break;
+        case GROUPING_TYPE.BIRTHDAY:
+            slicedGroup.sort((a,b) => (new Date(a.name) > new Date(b.name))?1:-1);
+            //slicedGroup.reverse();
+            break;
+        default:
+            slicedGroup.sort((a,b) => (a.name>b.name)?1:-1);
+    }
+    slicedGroup.forEach(pieces => pieces.characters.sort((a,b) => (a.about.reading>b.about.reading)?1:-1));
+    return slicedGroup;
+}
+
+const replaceDate = (group) => {
+    console.log(group);
+    group.forEach((piece,i) => {
+        if(piece.name.indexOf("-") === -1) return;
+        var splitedDoB = piece.name.split("-");
+        group[i].name = splitedDoB[0] + "月" + splitedDoB[1] + "日";
+    })
+    console.log(group);
+    return group;
 }
