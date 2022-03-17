@@ -1,7 +1,8 @@
 const GROUPING_TYPE = {
     ADDRESS: 'address',
     BIRTHDAY: 'birthday',
-    READING: 'reading'
+    READING: 'reading',
+    HEIGHT: 'height'
 };
 
 const addressOrder = ["蓬莱(中央区統制局)","中央学院初等部(玄武院)","中央学院中等部(白虎院)","中央学院高等部(青龍院)","中央学院大学(朱雀院)","海の国(イドゥシィ)","空の国(ソクェウラ)","陸の国(ディグラン)","森の国(フォーグスト)","砂の国(サンデザット)","氷の国(リアトベス)","No data"]
@@ -47,11 +48,14 @@ const sortGroup = ({ group, groupingBy }) => {
     var slicedGroup = Object.values(group);
     switch(groupingBy) {
         case GROUPING_TYPE.ADDRESS:
-            slicedGroup.sort((a,b) => (addressOrder.indexOf(a.name)>addressOrder.indexOf(b.name))?1:-1);
+            slicedGroup.sort((a,b) => (addressOrder.indexOf(a.name) > addressOrder.indexOf(b.name))?1:-1);
             break;
         case GROUPING_TYPE.BIRTHDAY:
             slicedGroup.sort((a,b) => (new Date(a.name) > new Date(b.name))?1:-1);
             slicedGroup = replaceDate(slicedGroup);
+            break;
+        case GROUPING_TYPE.HEIGHT:
+            slicedGroup.sort((a,b) => parseFloat(a.name) > parseFloat(b.name) ? 1:-1);
             break;
         default:
             slicedGroup.sort((a,b) => (a.name>b.name)?1:-1);
