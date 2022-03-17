@@ -19,6 +19,8 @@ function About() {
             <p>{data['about']['description']}</p>
             <h2>address</h2>
             <p>{data['about']['address']}</p>
+            <h2>height</h2>
+            <p>{data['about']['height']}</p>
             <h2>birthday</h2>
             <p>{data['about']['birthday']}</p>
             <h2>motif</h2>
