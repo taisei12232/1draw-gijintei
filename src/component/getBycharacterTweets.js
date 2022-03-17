@@ -11,6 +11,7 @@ export const useFetchBycharaTweet = (logicId, nameOfChara) => {
                 'about':{
                     'description':'No data',
                     'address':'No data',
+                    'height':'No data',
                     'birthday':'No data',
                     'motif':'No data'
                 },
@@ -22,6 +23,7 @@ export const useFetchBycharaTweet = (logicId, nameOfChara) => {
             data['about'] = {
                 'description':'No data',
                 'address':'No data',
+                'height':'No data',
                 'birthday':'No data',
                 'motif':'No data'
             }
