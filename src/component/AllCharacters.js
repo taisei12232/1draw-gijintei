@@ -11,7 +11,8 @@ const LOGIC_ID = {
 const GROUPING_TYPE = {
     ADDRESS: 'address',
     BIRTHDAY: 'birthday',
-    READING: 'reading'
+    READING: 'reading',
+    HEIGHT: 'height'
 };
 
 const AllCharacters = () => {
@@ -39,6 +40,7 @@ const AllCharacters = () => {
                 <option value={GROUPING_TYPE.ADDRESS}>住所順</option>
                 <option value={GROUPING_TYPE.READING}>五十音順</option>
                 <option value={GROUPING_TYPE.BIRTHDAY}>誕生日順</option>
+                <option value={GROUPING_TYPE.HEIGHT}>身長順</option>
             </select>
                 {groups.map((group) => (
                 <div className="group" key={group.name}>
