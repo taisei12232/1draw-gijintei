@@ -1,36 +1,36 @@
 .component-header {
-    padding: 0px;
-    position: relative;
-    background-color: #EF7DB6;
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    display:flex;
-    font-size: 20px;
-  }
-  
-  img {
-    height: 46px;
-    margin: 0;
-  }
-  .main {
-    text-align: left;
-    font-size: 28px;
-    margin: auto auto auto 0;
-    height: 46px;
-  }
+  padding: 0px;
+  position: relative;
+  background-color: #EF7DB6;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display:flex;
+  font-size: 20px;
+}
 
-  .sub {
-    margin: auto 0;
-    border-right:1px solid;
-    padding: 4px;
-  }
+.main > img {
+  height: 46px;
+  margin: 0;
+}
+.main {
+  text-align: left;
+  font-size: 28px;
+  margin: auto auto auto 0;
+  height: 46px;
+}
 
-  .end{
-    border:none;
-    margin: auto 0;
-    padding: 4px;
-  }
+.sub {
+  margin: auto 0;
+  border-right:1px solid;
+  padding: 4px;
+}
 
-  .link {
-    color: #333;
-    text-decoration: none;
-  }
+.end{
+  border:none;
+  margin: auto 0;
+  padding: 4px;
+}
+
+.link {
+  color: #333;
+  text-decoration: none;
+}

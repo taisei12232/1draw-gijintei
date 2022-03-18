@@ -3,11 +3,11 @@
     margin: 0 auto;
 }
 
-h1 {
+.component-bychara > h1 {
     font-size: max(3vw,30px);
 }
 
-h2 {
+.component-bychara > h2 {
     font-size: max(1.6vw,16px);
     margin : 5px auto;
 }

@@ -15,6 +15,13 @@ function About() {
     return (
         <div className='component-bychara'>
             <h1>{name}</h1>
+            {
+            data['about']['japanesename'] && 
+                <>
+                    <h2>japanese name</h2>
+                    <p>{data['about']['japanesename']}</p>
+                </>
+            }
             <h2>description</h2>
             <p>{data['about']['description']}</p>
             <h2>address</h2>

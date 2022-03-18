@@ -8,24 +8,24 @@ export const useFetchBycharaTweet = (logicId, nameOfChara) => {
         const response = await getDoc(docRef)
         if(!response.exists()){
             return {
-                'about':{
-                    'description':'No data',
-                    'address':'No data',
-                    'height':'No data',
-                    'birthday':'No data',
-                    'motif':'No data'
+                about:{
+                    description:'No data',
+                    address:'No data',
+                    height:'No data',
+                    birthday:'No data',
+                    motif:'No data'
                 },
-                'ids':[]
+                ids:[]
             }
         }
         var data = response.data()
         if(!('about' in data)){
             data['about'] = {
-                'description':'No data',
-                'address':'No data',
-                'height':'No data',
-                'birthday':'No data',
-                'motif':'No data'
+                description:'No data',
+                address:'No data',
+                height:'No data',
+                birthday:'No data',
+                motif:'No data'
             }
         }
         if(!('ids' in data)){
