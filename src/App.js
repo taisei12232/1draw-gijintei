@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css';
 import Header from './component/Header';
+import Footer from './component/Footer';
 import Tweets from './component/Tweets';
 import AllCharacters from './component/AllCharacters';
 import Bychara from './component/Bychara';
@@ -13,7 +14,6 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Footer from './component/Footer';
 
 function App() {
 

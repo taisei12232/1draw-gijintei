@@ -41,6 +41,9 @@ const AllCharacters = () => {
                 <option value={GROUPING_TYPE.READING}>五十音順</option>
                 <option value={GROUPING_TYPE.BIRTHDAY}>誕生日順</option>
                 <option value={GROUPING_TYPE.HEIGHT}>身長順</option>
+                <option value='motif'>motif</option>
+                <option value='japanesename'>japanesename</option>
+                <option value='description'>description</option>
             </select>
                 {groups.map((group) => (
                 <div className="group" key={group.name}>
