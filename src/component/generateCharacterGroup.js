@@ -48,10 +48,13 @@ const sortGroup = ({ group, groupingBy }) => {
     var slicedGroup = Object.values(group);
     switch(groupingBy) {
         case GROUPING_TYPE.ADDRESS:
-            slicedGroup.sort((a,b) => (addressOrder.indexOf(a.name) > addressOrder.indexOf(b.name))?1:-1);
+            slicedGroup.sort((a,b) => addressOrder.indexOf(a.name) > addressOrder.indexOf(b.name)?1:-1);
             break;
         case GROUPING_TYPE.BIRTHDAY:
-            slicedGroup.sort((a,b) => (new Date(a.name) > new Date(b.name))?1:-1);
+            slicedGroup.sort((a,b) => {
+                if(!new Date(a.name).getTime()) return 1;
+                return new Date(a.name) > new Date(b.name)?1:-1;
+            });
             slicedGroup = replaceDate(slicedGroup);
             break;
         case GROUPING_TYPE.HEIGHT:
