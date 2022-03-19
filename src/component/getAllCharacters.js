@@ -1,7 +1,7 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase"
 import useSWRImmutable from 'swr/immutable'
-
+import { checkExistData } from './checkExistData'
 
 export const useFetchAllCharacters = (logicId) => {
     const fetcher = async () => {
@@ -9,7 +9,8 @@ export const useFetchAllCharacters = (logicId) => {
         const response = await getDocs(docRef);
         var docs = [];
         response.forEach(doc => {
-            docs.push(doc.data())
+            const data = checkExistData(doc.data());
+            docs.push(data);
         });
         return docs;
     };

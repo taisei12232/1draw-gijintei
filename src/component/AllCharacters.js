@@ -50,7 +50,7 @@ const AllCharacters = () => {
                         <Link
                         key={character.about.name}
                         className="character"
-                        to={character.about.name}
+                        to={`/bychara/${character.about.name}`}
                         >
                         {character.about.name}
                         </Link>
