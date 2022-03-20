@@ -1,7 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "./firebase"
 import useSWR from 'swr'
-import { checkExistData } from './checkExistData'
+import { checkExistData } from './checkExistData';
 
 export const useFetchBycharaTweet = (logicId, nameOfChara) => {
     const fetcher = async () => {
@@ -20,7 +20,15 @@ export const useFetchBycharaTweet = (logicId, nameOfChara) => {
             }
         }
         var data = checkExistData(response.data())
+        data = replaceDate(data);
         return data;
     };
     return useSWR(`/doc/${nameOfChara}`, fetcher);
 };
+
+const replaceDate = (data) => {
+    if(data.about.birthday.indexOf("-") === -1) return data;
+    const splitedDoB = data.about.birthday.split("-");
+    data.about.birthday = splitedDoB[0] + "月" + splitedDoB[1] + "日";
+    return data;
+}
