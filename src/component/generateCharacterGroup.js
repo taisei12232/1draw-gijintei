@@ -58,7 +58,10 @@ const sortGroup = ({ group, groupingBy }) => {
             slicedGroup = replaceDate(slicedGroup);
             break;
         case GROUPING_TYPE.HEIGHT:
-            slicedGroup.sort((a,b) => parseFloat(a.name) > parseFloat(b.name) ? 1:-1);
+            slicedGroup.sort((a,b) => {
+                if(!parseFloat(a.name)) return 1;
+                return parseFloat(a.name) > parseFloat(b.name) ? 1:-1
+            });
             break;
         default:
             slicedGroup.sort((a,b) => (a.name>b.name)?1:-1);
