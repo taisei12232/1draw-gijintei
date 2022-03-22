@@ -18,21 +18,21 @@ function About() {
             {
             data['about']['japanesename'] && 
                 <>
-                    <h2>japanese name</h2>
+                    <h2>・japanese name</h2>
                     <p>{data['about']['japanesename']}</p>
                 </>
             }
-            <h2>description</h2>
+            <h2>・description</h2>
             <p>{data['about']['description']}</p>
-            <h2>address</h2>
+            <h2>・address</h2>
             <p>{data['about']['address']}</p>
-            <h2>height</h2>
+            <h2>・height</h2>
             <p>{data['about']['height']}</p>
-            <h2>birthday</h2>
+            <h2>・birthday</h2>
             <p>{data['about']['birthday']}</p>
-            <h2>motif</h2>
+            <h2>・motif</h2>
             <p>{data['about']['motif']}</p>
-            <h2>Illust</h2>
+            <h2>・Illust</h2>
             {data['ids'].length
                 ?
                 <div className="tweets">
