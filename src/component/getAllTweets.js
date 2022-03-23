@@ -20,4 +20,3 @@ export const useFetchAllTweet = (logicId, dateList) => {
     };
     return useSWR(`/doc/${logicId}`, fetcher);
 };
-//test
