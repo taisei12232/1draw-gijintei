@@ -9,7 +9,7 @@ import Farday from './component/Farday';
 import Notfound from './component/Notfound';
 import Top from './component/Top';
 import AllCharactersTest from './component/AllCharacterTest';
-
+import Anniversary from './component/Anniversary';
 import {
   BrowserRouter as Router,
   Routes,
@@ -22,6 +22,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
+        <Anniversary />
         <Routes>
           <Route path="/" element={<Top />} />
           <Route path="/1draw" element={<Tweets />} />

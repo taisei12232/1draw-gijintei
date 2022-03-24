@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import './Bychara.css';
 import { useFetchBycharaTweet } from './getBycharacterTweets';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
+import Confetti from 'react-confetti'
 
 const LogicId = {
     BY_CHARA: 'by_chara',
@@ -12,8 +13,10 @@ function About() {
     const { name } = useParams();
     const { data } = useFetchBycharaTweet(LogicId.BY_CHARA,name);
     if (!data) return (<div>loading...</div>)
+    const dt = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
     return (
         <div className='component-bychara'>
+            {(dt.getMonth()+1) + "月" +  dt.getDate() + "日" === data['about']['birthday'] && <Confetti />}
             <h1>{name}</h1>
             {
             data['about']['japanesename'] && 
