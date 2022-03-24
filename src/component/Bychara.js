@@ -38,7 +38,7 @@ function About() {
             <h2>・Illust</h2>
             {data['ids'].length
                 ?
-                <div className="tweets">
+                <div className="bychara-tweets">
                     {data['ids'].map(tweetId => (
                         <TwitterTweetEmbed
                             key={tweetId}
