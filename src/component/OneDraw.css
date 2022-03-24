@@ -1,9 +1,9 @@
-.component-tweets {
+.component-onedraw {
     width: 80vw;
     margin:0 auto;
 }
 
-.twitter {
+.tweets {
     display:flex;
     flex-wrap: wrap;
     border-top:1px solid;

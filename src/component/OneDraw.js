@@ -1,22 +1,22 @@
 import React from 'react'
 import { days } from "./Days"
-import { useFetchAllTweet } from './getAllTweets';
+import { useFetchOneDrawTweet} from './getOneDrawTweets';
 import { TwitterTweetEmbed } from 'react-twitter-embed';
-import './Tweets.css';
+import './OneDraw.css';
 
 const LogicId = {
     ILLUST_SO_FAR: 'illust_so_far',
 }
 
-function Tweets(){
-    const {data} = useFetchAllTweet(LogicId.ILLUST_SO_FAR, days);
+function OneDraw(){
+    const {data} = useFetchOneDrawTweet(LogicId.ILLUST_SO_FAR, days);
     if (!data) return (<div>loading...</div>)
     return (
-        <div className='component-tweets'>
+        <div className='component-onedraw'>
             {data.map(({date, tweetIds}) => (
                 <div key={date} className="Days">
                     <p>{date}</p>
-                    <div className="twitter">
+                    <div className="tweets">
                         {tweetIds.map(tweetId => (
                         <TwitterTweetEmbed
                             key={tweetId}
@@ -44,4 +44,4 @@ function Tweets(){
     );
 }
 
-export default Tweets;
+export default OneDraw;

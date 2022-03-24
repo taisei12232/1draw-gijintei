@@ -3,7 +3,7 @@ import { db } from "./firebase"
 import useSWR from 'swr'
 import { replaceDate } from "./replaceDate";
 
-export const useFetchAllTweet = (logicId, dateList) => {
+export const useFetchOneDrawTweet = (logicId, dateList) => {
     const fetcher = async () => {
       const requests = dateList.map(date => {
         const docRef = doc(db, logicId, date);
