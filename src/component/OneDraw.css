@@ -1,0 +1,36 @@
+.component-onedraw {
+    width: 80vw;
+    margin:0 auto;
+}
+
+.theme-div {
+    margin: 0 auto;
+    border-top:1px solid;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.theme {
+    margin:8px;
+    border:1px solid;
+    border-radius: 10px;
+    background-color: #FEE;
+    padding: 3px;
+    color:#633;
+    text-decoration: none;
+}
+
+.onedraw-tweets {
+    display:flex;
+    flex-wrap: wrap;
+    border-top:1px solid;
+}
+
+.Days {
+    margin: 0 auto;
+}
+
+.Days > p {
+    font-size: min(2vw,20px);
+    text-align: left;
+}

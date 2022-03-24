@@ -1,6 +1,6 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "./firebase"
-import useSWR from 'swr'
+import useSWRImmutable from 'swr/immutable'
 import { checkExistData } from './checkExistData';
 
 export const useFetchBycharaTweet = (logicId, nameOfChara) => {
@@ -23,7 +23,7 @@ export const useFetchBycharaTweet = (logicId, nameOfChara) => {
         data = replaceDate(data);
         return data;
     };
-    return useSWR(`/doc/${nameOfChara}`, fetcher);
+    return useSWRImmutable(`/doc/${nameOfChara}`, fetcher);
 };
 
 const replaceDate = (data) => {
