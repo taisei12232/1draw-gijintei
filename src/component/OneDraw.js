@@ -16,7 +16,7 @@ function OneDraw(){
             {data.map(({date, tweetIds}) => (
                 <div key={date} className="Days">
                     <p>{date}</p>
-                    <div className="tweets">
+                    <div className="onedraw-tweets">
                         {tweetIds.map(tweetId => (
                         <TwitterTweetEmbed
                             key={tweetId}
