@@ -1,6 +1,6 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "./firebase"
-import useSWR from 'swr'
+import useSWRImmutable from 'swr/immutable'
 import { replaceDate } from "./replaceDate";
 
 export const useFetchOneDrawTweet = (logicId, dateList) => {
@@ -18,5 +18,5 @@ export const useFetchOneDrawTweet = (logicId, dateList) => {
       })
       return await Promise.all(requests);
     };
-    return useSWR(`/doc/${logicId}`, fetcher);
+    return useSWRImmutable(`/doc/${logicId}`, fetcher);
 };
