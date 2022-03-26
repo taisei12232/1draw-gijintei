@@ -6,6 +6,7 @@ import axios from 'axios';
 import './Adminzakura.css';
 
 const Adminzakura = () => {
+    const [resStatus,setResStatus] = useState("")
     const name = useRef(null);
     const japanesename = useRef(null);
     const reading = useRef(null);
@@ -32,15 +33,15 @@ const Adminzakura = () => {
         console.log(params)
         await axios.post('https://asia-northeast1-ouagijintei.cloudfunctions.net/updateCharacter',params)
             .then(response => {
-                console.log(200)
                 console.log(response.status)
-                console.log(response.statusText)
+                console.log(response.data)
+                setResStatus(response.data)
             })
-            .catch(response => {
-                console.log(400)
+            .catch(({response}) => {
                 console.log(response.status)
-                console.log(response.statusText)
-            })
+                console.log(response.data)
+                setResStatus(response.data)
+            });
     };
     const togglePassword = () => {
         setIsRevealPassword((prevState) => !prevState);
@@ -83,6 +84,7 @@ const Adminzakura = () => {
                     <input type='submit' />
                 </div>
             </form>
+            <p>{resStatus}</p>
         </div>
     );
 };
