@@ -1,58 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from 'axios';
 import './Adminzakura.css';
 
 const Adminzakura = () => {
-    const [name,setName] = useState("");
-    const [japanesename,setJapanesename] = useState("");
-    const [reading,setReading] = useState("");
-    const [description,setDescription] = useState("No data");
-    const [address,setAddress] = useState("No data");
-    const [height,setHeight] = useState("No data");
-    const [birthday,setBirthday] = useState("No data");
-    const [motif,setMotif] = useState("No data");
-    const [passwd,setPasswd] = useState("");
+    const name = useRef(null);
+    const japanesename = useRef(null);
+    const reading = useRef(null);
+    const description = useRef(null);
+    const address = useRef(null);
+    const height = useRef(null);
+    const birthday = useRef(null);
+    const motif = useRef(null);
+    const passwd = useRef(null);
     const [isRevealPassword, setIsRevealPassword] = useState(false);
-    const handleNameChange = (e) => {
-        setName(e.target.value);
-    };
-    const handleJapanesenameChange = (e) => {
-        setJapanesename(e.target.value);
-    }
-    const handleReadingChange = (e) => {
-        setReading(e.target.value);
-    }
-    const handleDescriptionChange = (e) => {
-        setDescription(e.target.value);
-    }
-    const handleAddressChange = (e) => {
-        setAddress(e.target.value);
-    }
-    const handleHeightChange = (e) => {
-        setHeight(e.target.value);
-    }
-    const handleBirthdayChange = (e) => {
-        setBirthday(e.target.value);
-    }
-    const handleMotifChange = (e) => {
-        setMotif(e.target.value);
-    }
-    const handlePasswdChange = (e) => {
-        setPasswd(e.target.value);
-    }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(name);
-        console.log(japanesename);
-        console.log(reading);
-        console.log(description);
-        console.log(address);
-        console.log(height);
-        console.log(birthday);
-        console.log(motif);
-        console.log(passwd);
+        const params = {
+            name:name.current.value,
+            japanesename:japanesename.current.value,
+            reading:reading.current.value,
+            description:description.current.value,
+            address:address.current.value,
+            height:height.current.value,
+            birthday:birthday.current.value,
+            motif:motif.current.value,
+            passwd:passwd.current.value
+        }
+        console.log(params)
+        await axios.post('https://asia-northeast1-ouagijintei.cloudfunctions.net/updateCharacter',params)
+            .then(response => {
+                console.log(200)
+                console.log(response.status)
+                console.log(response.statusText)
+            })
+            .catch(response => {
+                console.log(400)
+                console.log(response.status)
+                console.log(response.statusText)
+            })
     };
     const togglePassword = () => {
         setIsRevealPassword((prevState) => !prevState);
@@ -64,23 +52,23 @@ const Adminzakura = () => {
             </select>
             <form onSubmit={handleSubmit}>
                 <p>(必須)名前</p>
-                <input type='text' name='name' value={name} placeholder='蓬莱ネネ' required onChange={handleNameChange} />
+                <input type='text' name='name' ref={name} placeholder='蓬莱ネネ' required />
                 <p>漢字の名前(存在する場合)(カナ混じりの場合もフルネームで書いてください)(存在しない場合は必ず空欄にしてください)</p>
-                <input type="text" name='japanesename' value={japanesename} placeholder='蓬莱子々' onChange={handleJapanesenameChange} />
+                <input type="text" name='japanesename' ref={japanesename} placeholder='蓬莱子々' />
                 <p>(必須)読み(記号なし全てカタカナ)</p>
-                <input type='text' name='reading' value={reading} placeholder='ヨモギライネネ' required onChange={handleReadingChange} />
+                <input type='text' name='reading' ref={reading} placeholder='ヨモギライネネ' required />
                 <p>説明</p>
-                <textarea rows='10' cols='40' value={description} onChange={handleDescriptionChange} />
+                <textarea rows='10' cols='40' ref={description} defaultValue='No data' />
                 <p>住所</p>
-                <input type='text' name='address' value={address} onChange={handleAddressChange} />
+                <input type='text' name='address' ref={address} defaultValue='No data' />
                 <p>身長(数値cmの形で記入してください)</p>
-                <input type='text' name='height' value={height} onChange={handleHeightChange} />
+                <input type='text' name='height' ref={height} defaultValue='No data' />
                 <p>誕生日(数値-数値の形で記入してください)</p>
-                <input type='text' name='birthday' value={birthday} onChange={handleBirthdayChange} />
+                <input type='text' name='birthday' ref={birthday} defaultValue='No data' />
                 <p>モチーフ</p>
-                <input type='text' name='motif' value={motif} onChange={handleMotifChange} />
+                <input type='text' name='motif' ref={motif} defaultValue='No data' />
                 <p>パスワード</p>
-                <input type={isRevealPassword ? 'text' : 'password'} name='passwd' value={passwd} required onChange={handlePasswdChange} />
+                <input type={isRevealPassword ? 'text' : 'password'} name='passwd' ref={passwd} required />
                 <span
                     onClick={togglePassword}
                     className='eye'
