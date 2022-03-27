@@ -2,10 +2,12 @@ import React, { useState, useRef } from 'react'
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useFetchAllCharacters } from "./getAllCharacters";
 import axios from 'axios';
 import './Adminzakura.css';
 
 const Adminzakura = () => {
+    const { data: characters } = useFetchAllCharacters("by_chara");
     const [resStatus,setResStatus] = useState("")
     const name = useRef(null);
     const japanesename = useRef(null);
@@ -46,10 +48,14 @@ const Adminzakura = () => {
     const togglePassword = () => {
         setIsRevealPassword((prevState) => !prevState);
     }
+    if(!characters) return <div><p>loading...</p></div>
     return (
         <div className='component-adminzakura'>
             <select>
-                <option value="adazakura">アダザクラ</option>
+                <option value='new'>新規作成</option>
+                {characters.map(character => (
+                    <option value={character.about.name}>{character.about.name}</option>
+                ))}
             </select>
             <form onSubmit={handleSubmit}>
                 <p>(必須)名前</p>
