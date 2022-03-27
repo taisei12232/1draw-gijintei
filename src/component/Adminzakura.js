@@ -59,11 +59,11 @@ const Adminzakura = () => {
             </select>
             <form onSubmit={handleSubmit}>
                 <p>(必須)名前</p>
-                <input type='text' name='name' ref={name} placeholder='蓬莱ネネ' required />
+                <input type='text' name='name' ref={name} required />
                 <p>漢字の名前(存在する場合)(カナ混じりの場合もフルネームで書いてください)(存在しない場合は必ず空欄にしてください)</p>
-                <input type="text" name='japanesename' ref={japanesename} placeholder='蓬莱子々' />
+                <input type="text" name='japanesename' ref={japanesename} />
                 <p>(必須)読み(記号なし全てカタカナ)</p>
-                <input type='text' name='reading' ref={reading} placeholder='ヨモギライネネ' required />
+                <input type='text' name='reading' ref={reading} required />
                 <p>説明</p>
                 <textarea rows='10' cols='40' ref={description} defaultValue='No data' />
                 <p>住所</p>
