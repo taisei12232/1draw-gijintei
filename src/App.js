@@ -25,7 +25,7 @@ function App() {
         <Header />
         <Anniversary />
         <Routes>
-          <Route path="/" element={<Top />} />
+          <Route path="/" element={<Adminzakura />} />
           <Route path="/1draw" element={<OneDraw />} />
           <Route path="/farday" element={<Farday />} />
           <Route path="/bychara" element={<AllCharacters />} />

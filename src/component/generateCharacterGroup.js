@@ -18,6 +18,7 @@ export const generateCharacterGroup = ({ characters, groupingBy }) => {
 
 const generateGroup = ({ characters, groupingBy }) => {
     const group = {};
+    console.log(characters)
     characters.forEach((character) => {
         const key = character.about[groupingBy];
         const currentCharacters = group[key]?.characters || [];
