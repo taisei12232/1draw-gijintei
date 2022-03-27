@@ -10,9 +10,9 @@ export const useFetchBycharaTweet = (logicId, nameOfChara) => {
         if(!response.exists()){
             return {
                 about:{
-                    name:"No data",
-                    japanesename:"",
-                    reading:"No data",
+                    name:'',
+                    japanesename: '',
+                    reading: '',
                     description:'No data',
                     address:'No data',
                     height:'No data',

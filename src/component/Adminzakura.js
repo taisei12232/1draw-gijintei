@@ -9,7 +9,7 @@ import './Adminzakura.css';
 
 const Adminzakura = () => {
     const { data: characters } = useFetchAllCharacters("by_chara");
-    const [chosenCharacter,setChosenCharacter] = useState("new");
+    const [chosenCharacter,setChosenCharacter] = useState("新規作成");
     const { data: charactersList } = useFetchBycharaTweet("by_chara",chosenCharacter)
     const [resStatus,setResStatus] = useState("")
     const [name,setName] = useState("");
@@ -23,7 +23,6 @@ const Adminzakura = () => {
     const [passwd,setPasswd] = useState("");
     const [isRevealPassword, setIsRevealPassword] = useState(false);
     useEffect(() => {
-        console.log(charactersList)
         if(charactersList){
             setName(charactersList.about.name);
             setJapanesename(charactersList.about.japanesename);
@@ -33,6 +32,7 @@ const Adminzakura = () => {
             setHeight(charactersList.about.height);
             setBirthday(charactersList.about.birthday);
             setMotif(charactersList.about.motif);
+            setResStatus("");
         }
     },[charactersList])
     const handleNameChange = (e) => {
@@ -65,6 +65,7 @@ const Adminzakura = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const params = {
+            dacName:chosenCharacter,
             name:name,
             japanesename:japanesename,
             reading:reading,
@@ -76,17 +77,32 @@ const Adminzakura = () => {
             passwd:passwd
         }
         console.log(params)
-        await axios.post('https://asia-northeast1-ouagijintei.cloudfunctions.net/updateCharacter',params)
-            .then(response => {
-                console.log(response.status)
-                console.log(response.data)
-                setResStatus(response.data)
-            })
-            .catch(({response}) => {
-                console.log(response.status)
-                console.log(response.data)
-                setResStatus(response.data)
-            });
+        if(chosenCharacter === "新規作成"){
+            await axios.post('https://asia-northeast1-ouagijintei.cloudfunctions.net/createNewCharacter',params)
+                .then(response => {
+                    console.log(response.status)
+                    console.log(response.data)
+                    setResStatus(response.data)
+                })
+                .catch(({response}) => {
+                    console.log(response.status)
+                    console.log(response.data)
+                    setResStatus(response.data)
+                });
+        }
+        else{
+            await axios.post('https://asia-northeast1-ouagijintei.cloudfunctions.net/updateCharacter',params)
+                .then(response => {
+                    console.log(response.status)
+                    console.log(response.data)
+                    setResStatus(response.data)
+                })
+                .catch(({response}) => {
+                    console.log(response.status)
+                    console.log(response.data)
+                    setResStatus(response.data)
+                });
+        }
     };
     const togglePassword = () => {
         setIsRevealPassword((prevState) => !prevState);
@@ -94,19 +110,18 @@ const Adminzakura = () => {
     const handleSelectChange = useCallback((e) => {
         setChosenCharacter(e.target.value);
     }, []);
-    console.log(characters)
-    console.log(charactersList)
-    console.log(chosenCharacter)
     if(!charactersList || !characters) return <div><p>loading...</p></div>
-    console.log(charactersList)
     return (
         <div className='component-adminzakura'>
+            <p>変更したいキャラクターを選んでください(新規作成の場合は必ず新規作成を選択してください)</p>
             <select onChange={handleSelectChange}>
-                <option value='new'>新規作成</option>
+                <option hidden>選択してください</option>
+                <option value='新規作成'>新規作成</option>
                 {characters.map(character => (
                     <option key={character.about.name} value={character.about.name}>{character.about.name}</option>
                 ))}
             </select>
+            <p>選択中：{chosenCharacter}</p>
             <form onSubmit={handleSubmit}>
                 <p>(必須)名前</p>
                 <input type='text' name='name' onChange={handleNameChange} value={name} required />
