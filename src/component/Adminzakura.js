@@ -69,6 +69,11 @@ const Adminzakura = () => {
     const handleSubmit = async () => {
         setResStatus("");
         setIsDisabled(false);
+        if(!checkInput()){
+            setResStatus("入力に空欄があります！(漢字名は除く)");
+            setIsDisabled(true);
+            return 0;
+        } 
         const params = {
             docName:chosenCharacter,
             passwd:passwd,
@@ -90,7 +95,12 @@ const Adminzakura = () => {
                     setIsDisabled(true);
                 })
                 .catch(({response}) => {
-                    setResStatus(response.data)
+                    if(!response){
+                        setResStatus("予期せぬエラーが発生しました。");
+                    }
+                    else{
+                        setResStatus(response.data)
+                    }
                     setIsDisabled(true);
                 });
         }
@@ -101,7 +111,12 @@ const Adminzakura = () => {
                     setIsDisabled(true);
                 })
                 .catch(({response}) => {
-                    setResStatus(response.data)
+                    if(!response){
+                        setResStatus("予期せぬエラーが発生しました。");
+                    }
+                    else{
+                        setResStatus(response.data)
+                    }
                     setIsDisabled(true);
                 });
         }
@@ -109,6 +124,11 @@ const Adminzakura = () => {
     const handleDelete = async () => {
         setResStatus("");
         setIsDisabled(false);
+        if(!checkInput()){
+            setResStatus("入力に空欄があります！(漢字名は除く)");
+            setIsDisabled(true);
+            return 0;
+        } 
         const params = {
             docName:chosenCharacter,
             passwd:passwd,
@@ -129,7 +149,12 @@ const Adminzakura = () => {
                 setIsDisabled(true);
             })
             .catch(({response}) => {
-                setResStatus(response.data)
+                if(!response){
+                    setResStatus("予期せぬエラーが発生しました。");
+                }
+                else{
+                    setResStatus(response.data)
+                }
                 setIsDisabled(true);
             });
     }
@@ -139,6 +164,10 @@ const Adminzakura = () => {
     const handleSelectChange = useCallback((e) => {
         setChosenCharacter(e.target.value);
     }, []);
+    const checkInput = () => {
+        if(!name || !reading || !description || !address || !height || !birthday || !motif || !passwd) return 0;
+        return 1;
+    }
     if(!charactersList || !characters) return <div><p>loading...</p></div>
     return (
         <div className='component-adminzakura'>
@@ -159,15 +188,15 @@ const Adminzakura = () => {
                 <p>(必須)読み(記号なし全てカタカナ)</p>
                 <input type='text' name='reading' onChange={handleReadingChange} value={reading} required />
                 <p>説明</p>
-                <textarea rows='10' cols='40' onChange={handleDescriptionChange} value={description} />
+                <textarea rows='10' cols='40' onChange={handleDescriptionChange} value={description} required />
                 <p>住所</p>
-                <input type='text' name='address' onChange={handleAddressChange} value={address} />
+                <input type='text' name='address' onChange={handleAddressChange} value={address} required />
                 <p>身長(数値cmの形で記入してください)</p>
-                <input type='text' name='height' onChange={handleHeightChange} value={height} />
+                <input type='text' name='height' onChange={handleHeightChange} value={height} required />
                 <p>誕生日(数値-数値の形で記入してください)</p>
-                <input type='text' name='birthday' onChange={handleBirthdayChange} value={birthday} />
+                <input type='text' name='birthday' onChange={handleBirthdayChange} value={birthday} required />
                 <p>モチーフ</p>
-                <input type='text' name='motif' onChange={handleMotifChange} value={motif} />
+                <input type='text' name='motif' onChange={handleMotifChange} value={motif} required />
                 <p>パスワード</p>
                 <input type={isRevealPassword ? 'text' : 'password'} name='passwd' onChange={handlePasswdChange} required />
                 <span
