@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.1",
     "firebase": "^9.6.8",
     "react": "^17.0.2",
     "react-confetti": "^6.0.1",
@@ -16,6 +21,7 @@
     "react-twitter-embed": "^4.0.4",
     "react-use": "^17.3.2",
     "swr": "^1.2.2",
+    "use-intersection": "^0.2.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

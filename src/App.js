@@ -10,6 +10,7 @@ import Notfound from './component/Notfound';
 import Top from './component/Top';
 import AllCharactersTest from './component/AllCharacterTest';
 import Anniversary from './component/Anniversary';
+import Adminzakura from './component/Adminzakura';
 import {
   BrowserRouter as Router,
   Routes,
@@ -30,6 +31,7 @@ function App() {
           <Route path="/bychara" element={<AllCharacters />} />
           <Route path="/allchara" element={<AllCharactersTest />} />
           <Route path="/bychara/:name" element={<Bychara />} />
+          <Route path='/adminzakura' element={<Adminzakura />} />
           <Route path='/*' element={<Notfound />} />
         </Routes>
         <Footer />

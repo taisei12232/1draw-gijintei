@@ -32,3 +32,27 @@ const replaceDate = (data) => {
     data.about.birthday = splitedDoB[0] + "月" + splitedDoB[1] + "日";
     return data;
 }
+
+export const useFetchForAdmin = (logicId, nameOfChara) => {
+    const fetcher = async () => {
+        const docRef = doc(db, logicId, nameOfChara);
+        const response = await getDoc(docRef)
+        if(!response.exists()){
+            return {
+                about:{
+                    name:'',
+                    japanesename: '',
+                    reading: '',
+                    description:'No data',
+                    address:'No data',
+                    height:'No data',
+                    birthday:'No data',
+                    motif:'No data'
+                }
+            }
+        }
+        var data = checkExistData(response.data())
+        return data;
+    };
+    return useSWRImmutable(`/doc/${nameOfChara}`, fetcher);
+};

@@ -1,0 +1,14 @@
+.component-adminzakura {
+    width: 80vw;
+    margin: 0 auto;
+    margin-top: 24px;
+}
+
+.submit-button{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-button {
+    color: red;
+}
