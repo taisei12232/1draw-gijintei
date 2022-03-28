@@ -66,8 +66,7 @@ const Adminzakura = () => {
     const blockSubmit = (e) => {
         e.preventDefault();
     }
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         setResStatus("");
         setIsDisabled(false);
         const params = {
@@ -83,7 +82,6 @@ const Adminzakura = () => {
                 birthday:birthday,
                 motif:motif
             }
-            
         }
         if(chosenCharacter === "新規作成"){
             await axios.post('https://asia-northeast1-ouagijintei.cloudfunctions.net/createNewCharacter',params)
@@ -108,6 +106,33 @@ const Adminzakura = () => {
                 });
         }
     };
+    const handleDelete = async () => {
+        setResStatus("");
+        setIsDisabled(false);
+        const params = {
+            docName:chosenCharacter,
+            passwd:passwd,
+            about:{
+                name:name,
+                japanesename:japanesename,
+                reading:reading,
+                description:description,
+                address:address,
+                height:height,
+                birthday:birthday,
+                motif:motif
+            }
+        }
+        await axios.post('https://asia-northeast1-ouagijintei.cloudfunctions.net/deleteCharacter',params)
+            .then(response => {
+                setResStatus(response.data)
+                setIsDisabled(true);
+            })
+            .catch(({response}) => {
+                setResStatus(response.data)
+                setIsDisabled(true);
+            });
+    }
     const togglePassword = () => {
         setIsRevealPassword((prevState) => !prevState);
     }
@@ -155,9 +180,7 @@ const Adminzakura = () => {
                         <FontAwesomeIcon icon={faEyeSlash} />
                     }
                 </span>
-                <div>
-                    {isDisabled && <input type='submit'/>}
-                </div>
+                    {isDisabled && <div className='submit-button'><input type='button' value="送信" onClick={handleSubmit} /> <input type='button' value='削除' className='delete-button' onClick={handleDelete} /></div>}
             </form>
             <p>{resStatus}</p>
         </div>
