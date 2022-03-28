@@ -3,14 +3,14 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFetchAllCharacters } from "./getAllCharacters";
-import { useFetchBycharaTweet } from './getBycharacterTweets';
+import { useFetchForAdmin } from './getBycharacterTweets';
 import axios from 'axios';
 import './Adminzakura.css';
 
 const Adminzakura = () => {
     const { data: characters } = useFetchAllCharacters("by_chara");
     const [chosenCharacter,setChosenCharacter] = useState("新規作成");
-    const { data: charactersList } = useFetchBycharaTweet("by_chara",chosenCharacter)
+    const { data: charactersList } = useFetchForAdmin("by_chara",chosenCharacter)
     const [resStatus,setResStatus] = useState("")
     const [name,setName] = useState("");
     const [japanesename,setJapanesename] = useState("");
@@ -22,6 +22,7 @@ const Adminzakura = () => {
     const [motif,setMotif] = useState("No data");
     const [passwd,setPasswd] = useState("");
     const [isRevealPassword, setIsRevealPassword] = useState(false);
+    const [isDisabled,setIsDisabled] = useState(true)
     useEffect(() => {
         if(charactersList){
             setName(charactersList.about.name);
@@ -62,45 +63,48 @@ const Adminzakura = () => {
     const handlePasswdChange = (e) => {
         setPasswd(e.target.value);
     }
+    const blockSubmit = (e) => {
+        e.preventDefault();
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setResStatus("");
+        setIsDisabled(false);
         const params = {
-            dacName:chosenCharacter,
-            name:name,
-            japanesename:japanesename,
-            reading:reading,
-            description:description,
-            address:address,
-            height:height,
-            birthday:birthday,
-            motif:motif,
-            passwd:passwd
+            docName:chosenCharacter,
+            passwd:passwd,
+            about:{
+                name:name,
+                japanesename:japanesename,
+                reading:reading,
+                description:description,
+                address:address,
+                height:height,
+                birthday:birthday,
+                motif:motif
+            }
+            
         }
-        console.log(params)
         if(chosenCharacter === "新規作成"){
             await axios.post('https://asia-northeast1-ouagijintei.cloudfunctions.net/createNewCharacter',params)
                 .then(response => {
-                    console.log(response.status)
-                    console.log(response.data)
                     setResStatus(response.data)
+                    setIsDisabled(true);
                 })
                 .catch(({response}) => {
-                    console.log(response.status)
-                    console.log(response.data)
                     setResStatus(response.data)
+                    setIsDisabled(true);
                 });
         }
         else{
             await axios.post('https://asia-northeast1-ouagijintei.cloudfunctions.net/updateCharacter',params)
                 .then(response => {
-                    console.log(response.status)
-                    console.log(response.data)
                     setResStatus(response.data)
+                    setIsDisabled(true);
                 })
                 .catch(({response}) => {
-                    console.log(response.status)
-                    console.log(response.data)
                     setResStatus(response.data)
+                    setIsDisabled(true);
                 });
         }
     };
@@ -122,7 +126,7 @@ const Adminzakura = () => {
                 ))}
             </select>
             <p>選択中：{chosenCharacter}</p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={blockSubmit}>
                 <p>(必須)名前</p>
                 <input type='text' name='name' onChange={handleNameChange} value={name} required />
                 <p>漢字の名前(存在する場合)(カナ混じりの場合もフルネームで書いてください)(存在しない場合は必ず空欄にしてください)</p>
@@ -152,7 +156,7 @@ const Adminzakura = () => {
                     }
                 </span>
                 <div>
-                    <input type='submit' />
+                    {isDisabled && <input type='submit'/>}
                 </div>
             </form>
             <p>{resStatus}</p>
