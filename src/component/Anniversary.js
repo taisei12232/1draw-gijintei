@@ -6,7 +6,7 @@ import './confetti.css'
 const Anniversary = () => {
     const { width, height } = useWindowSize()
     const dt = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
-    if((dt.getMonth()+1) + "-" +  dt.getDate() === "3-30"){
+    if((dt.getMonth()+1) + "-" +  dt.getDate() === "4-26"){
         return (
             <div className='confetti'>
                 <Confetti 
