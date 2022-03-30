@@ -16,7 +16,7 @@ function About() {
     const dt = new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
     return (
         <div className='component-bychara'>
-            {(dt.getMonth()+1) + "月" +  dt.getDate() + "日" === data['about']['birthday'] && <Confetti />}
+            {(dt.getMonth()+1) + "月" +  dt.getDate() + "日" === data['about']['birthday'] && <div className='confetti'><Confetti /></div>}
             <h1>{name}</h1>
             {
             data['about']['japanesename'] && 
